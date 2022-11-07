@@ -42,7 +42,7 @@ typedef struct tagBmpHeader
 // Bitmap file info functions
 
 BmpHeader *get_BmpHeader(char *fname);    // Gets and stores file and bitmap header information
-unsigned char *get_BmpImage(char *fname); // Gets the pixels from the bitmap data
+unsigned char *get_BmpImage(char *fname, BmpHeader *header); // Gets the pixels from the bitmap data
 int write_bmp_image(const char *fname,
                     const BmpHeader *header,
                     const unsigned char *image); // Creates a new bitmap image file

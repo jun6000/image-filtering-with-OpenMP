@@ -4,8 +4,8 @@ int main()
 {
     // Read image data
 
-    unsigned char *image = get_BmpImage("test_img.bmp");
     BmpHeader *header = get_BmpHeader("test_img.bmp");
+    unsigned char *image = get_BmpImage("test_img.bmp", header);
 
     // Read desired filter type
 
@@ -20,10 +20,10 @@ int main()
     if (strcmp(filter_type, "brightness\n") == 0)
     {
         printf("Enter the value of brightness to be applied: ");
-	int value;
-	scanf("%d", &value);
+        int value;
+        scanf("%d", &value);
 
-	result = set_brightness(value, header, image);
+	    result = set_brightness(value, header, image);
     }
 
     else if (strcmp(filter_type, "negative\n") == 0)
@@ -40,7 +40,7 @@ int main()
     if (result)
     {
         write_bmp_image("result_img.bmp", header, result);
-	printf("Filtered image written successfully!\n");
+	    printf("Filtered image written successfully!\n");
     }
 
     // Free allocated resources

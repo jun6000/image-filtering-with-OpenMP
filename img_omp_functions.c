@@ -30,7 +30,7 @@ BmpHeader *get_BmpHeader(char *fname)
     return header;
 }
 
-unsigned char *get_BmpImage(char *fname)
+unsigned char *get_BmpImage(char *fname, BmpHeader *header)
 {
     // Open file in read binary mode
 
@@ -40,10 +40,6 @@ unsigned char *get_BmpImage(char *fname)
         printf("File read failed.\n");
         return NULL;
     }
-
-    // Get header information
-
-    BmpHeader *header = get_BmpHeader(fname);
 
     // Verify that this is a .BMP file by checking bitmap id
 
@@ -91,7 +87,7 @@ unsigned char *get_BmpImage(char *fname)
     // Close file, free header pointers and return bitmap image data
 
     fclose(fptr);
-    free(header);
+
     return image;
 }
 
